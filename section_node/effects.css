@@ -1,0 +1,8 @@
+.to-rotate-90 {
+  display: inline-block;
+  transition: all .3s;
+}
+
+.to-rotate-90.rotated {
+  transform: rotate(90deg);
+}
