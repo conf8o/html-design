@@ -7,8 +7,7 @@
          :data-target "#section-body-1"}
    [:h5
     [:span {:class "to-rotate-90"} "&gt;"]
-    "[Title]"]]
+    "{title}"]]
   [:div {:id "section-body-1"
          :class "collapse hide"}
-   "[Contents]
-    [body...]"]])
+   "{contents}"]])
