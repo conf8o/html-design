@@ -1,58 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-class Rotation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rotated: false,
-    };
-    this.rotate = this.rotate.bind(this);
-  }
-
-  rotate() {
-    this.setState((state) => {
-      return { rotated: !state.rotated };
-    });
-  }
-
-  render() {
-    const deg = `${this.props.deg}deg`;
-    const rotated = this.state.rotated ? "rotated" : "";
-    return (
-      <span className={`to-rotate ${rotated}`} style={{ "--deg": deg }}>
-        {this.props.image}
-      </span>
-    );
-  }
+function Rotation(props) {
+  const deg = `${props.deg}deg`;
+  const rotated = props.rotated ? "rotated" : "";
+  return (
+    <span className={`to-rotate ${rotated}`} style={{ "--deg": deg}}>
+      {props.image}
+    </span>
+  );
 }
 
-class SectionNode extends React.Component {
+class ExpandSection extends React.Component {
   constructor(props) {
     super(props);
-    this.RotationRef = React.createRef();
+    this.state = {expanded: false};
     this.toggleExpand = this.toggleExpand.bind(this);
   }
 
   toggleExpand() {
-    this.rotationRef.current.rotate();
+    this.setState(state => ({expanded: !state.expanded}));
   }
 
   render() {
+    const icon = this.props.icon;
     return (
       <section className="border section-rounded-1 pl-3 p-2">
-        <div
-          className="section-header"
-          data-bs-target="#section-body-1"
-          data-bs-toggle="collapse"
-          onClick={this.toggleExpand}
-        >
+        <div className="section-header" data-bs-target="#section-body-1" data-bs-toggle="collapse" onClick={this.toggleExpand}>
           <h5>
-            <Rotation
-              ref={this.rotationRef}
-              image={this.props.icon.image}
-              deg={this.props.icon.rotateDeg}
-            />
+            <Rotation image={icon.image} deg={icon.deg} rotated={this.state.expanded} />
             {this.props.title}
           </h5>
         </div>
@@ -66,6 +42,6 @@ class SectionNode extends React.Component {
 
 const app = document.getElementById("app");
 ReactDOM.render(
-  <SectionNode icon={{ image: ">", rotateDeg: 90 }} title="FPS部" contents="hello" />,
+  <ExpandSection icon={{image: ">", deg: 90}} title="FPS部" contents="hello" />,
   app
 );
