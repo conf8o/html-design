@@ -35,7 +35,7 @@ class SectionNode extends React.Component {
   }
 
   toggleExpand() {
-    this.RotationRef.current.rotate();
+    this.rotationRef.current.rotate();
   }
 
   render() {
@@ -49,7 +49,7 @@ class SectionNode extends React.Component {
         >
           <h5>
             <Rotation
-              ref={this.RotationRef}
+              ref={this.rotationRef}
               image={this.props.icon.image}
               deg={this.props.icon.rotateDeg}
             />
