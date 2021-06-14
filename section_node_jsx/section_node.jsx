@@ -14,7 +14,7 @@ function Rotation(props) {
 class ExpandSection extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {expanded: false};
+    this.state = {expanded: props.show};
     this.toggleExpand = this.toggleExpand.bind(this);
   }
 
@@ -24,13 +24,14 @@ class ExpandSection extends React.Component {
 
   render() {
     const icon = this.props.icon;
+    const initCollapseState = this.props.show ? "show" : "hide";
     return (
       <section className="border section-rounded-1 pl-3 p-2">
         <h5 className="section-header" data-bs-target={`#${this.props.id}`} data-bs-toggle="collapse" onClick={this.toggleExpand}>
-          <Rotation image={icon.image} deg={icon.deg} rotated={this.state.expanded} />
+          <Rotation image={icon.image} deg={icon.rotateDeg} rotated={this.state.expanded} />
           {this.props.title}
         </h5>
-        <div className="collapse hide" id={this.props.id}>
+        <div className={`collapse ${initCollapseState}`} id={this.props.id}>
           {this.props.contents}
         </div>
       </section>
@@ -41,8 +42,8 @@ class ExpandSection extends React.Component {
 const app = document.getElementById("app");
 ReactDOM.render(
   <div>
-    <ExpandSection id="fps-club" icon={{image: "::", deg: 180}} title="FPS部" contents="hello" />
-    <ExpandSection id="creative-club" icon={{image: "@", deg: 90}} title="クリエイティブ部" contents="hello" />
+    <ExpandSection id="fps-club" icon={{image: "(^o^)", rotateDeg: 180}} title="FPS部" contents="hello" show={true} />
+    <ExpandSection id="creative-club" icon={{image: ":3", rotateDeg: 90}} title="クリエイティブ部" contents="hello" />
     </div>,
   app
 );
