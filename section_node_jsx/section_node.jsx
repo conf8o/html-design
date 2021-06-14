@@ -26,13 +26,11 @@ class ExpandSection extends React.Component {
     const icon = this.props.icon;
     return (
       <section className="border section-rounded-1 pl-3 p-2">
-        <div className="section-header" data-bs-target="#section-body-1" data-bs-toggle="collapse" onClick={this.toggleExpand}>
-          <h5>
-            <Rotation image={icon.image} deg={icon.deg} rotated={this.state.expanded} />
-            {this.props.title}
-          </h5>
-        </div>
-        <div className="collapse hide" id="section-body-1">
+        <h5 className="section-header" data-bs-target={`#${this.props.id}`} data-bs-toggle="collapse" onClick={this.toggleExpand}>
+          <Rotation image={icon.image} deg={icon.deg} rotated={this.state.expanded} />
+          {this.props.title}
+        </h5>
+        <div className="collapse hide" id={this.props.id}>
           {this.props.contents}
         </div>
       </section>
@@ -42,6 +40,9 @@ class ExpandSection extends React.Component {
 
 const app = document.getElementById("app");
 ReactDOM.render(
-  <ExpandSection icon={{image: ">", deg: 90}} title="FPS部" contents="hello" />,
+  <div>
+    <ExpandSection id="fps-club" icon={{image: "::", deg: 180}} title="FPS部" contents="hello" />
+    <ExpandSection id="creative-club" icon={{image: "@", deg: 90}} title="クリエイティブ部" contents="hello" />
+    </div>,
   app
 );
