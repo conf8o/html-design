@@ -1,7 +1,7 @@
 module.exports = {
-  entry: "/section_node_jsx/src/jsx/section_node.jsx",
+  entry: "/main/src/jsx/index.jsx",
   output: {
-    path: __dirname + "/section_node_jsx/",
+    path: __dirname + "/main/",
     filename: "index.js",
   },
   module: {
@@ -20,4 +20,7 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx"]
+  }
 };
