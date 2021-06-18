@@ -12,9 +12,9 @@ function Main(props) {
     </div>
   );
 }
-const app = document.getElementById("app");
+const main = document.getElementById("main");
 
 ReactDOM.render(
   <Main />,
-  app
+  main
 );
