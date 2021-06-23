@@ -1,8 +1,14 @@
+const outputPath = __dirname + "/main/";
+
 module.exports = {
-  entry: "/main/src/jsx/index.jsx",
+  entry: "/main/src/index.js",
   output: {
-    path: __dirname + "/main/",
+    path: outputPath,
     filename: "index.js",
+  },
+  devServer: {
+    contentBase: outputPath,
+    watchContentBase: true
   },
   module: {
     rules: [
@@ -18,6 +24,20 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              url: false
+            }
+          },
+          "sass-loader"
+        ]
+      }
     ],
   },
   resolve: {

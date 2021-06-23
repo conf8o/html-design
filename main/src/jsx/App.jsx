@@ -4,7 +4,7 @@ import { IconImage } from "./IconImage";
 import { ExpandSection } from "./ExpandSection";
 import { Profile } from "./Profile";
 
-function Main(props) {
+function App(props) {
   const apex = <IconImage name="apex_square.png" type="rounded-circle"/>;
   const banga = <Profile img="apex_square.png" name="バンガロール" intro="私は大砲よ。" links={["a","b","c"]}/>;
   const crypt = <Profile img="apex_square.png" name="クリプト" intro="ｸﾘｨ～" links={["a","b","c"]}/>;
@@ -30,9 +30,9 @@ function Main(props) {
     </div>
   );
 }
-const main = document.getElementById("main");
+const app = document.getElementById("app");
 
 ReactDOM.render(
-  <Main />,
-  main
+  <App />,
+  app
 );
