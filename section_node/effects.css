@@ -1,9 +1,0 @@
-.to-rotate {
-  --deg: 0deg;
-  display: inline-block;
-  transition: all 0.3s;
-}
-
-.to-rotate.rotated {
-  transform: rotate(var(--deg));
-}
